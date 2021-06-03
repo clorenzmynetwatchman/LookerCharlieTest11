@@ -5,14 +5,14 @@ view: liquidswitchviewtest {
         ,actor_id
         ,customer_id
         ,datasource_id
-        {% if customer.id._in_query %}
+        {% if proxy_asn.name._in_query %}
         ,proxy_asn
         {% endif %}
         ,session_count
-       FROM {% if customer.id._in_query %}
-          dashboard_test.summary_distilled_flows_dacs
-          {% else %}
+       FROM {% if proxy_asn.name._in_query %}
           dashboard_test.summary_distilled_flows_dacsp
+          {% else %}
+          dashboard_test.summary_distilled_flows_dacs
           {% endif %}
        ;;
    }
