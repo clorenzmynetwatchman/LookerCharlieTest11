@@ -24,22 +24,22 @@ view: dt_distilled_flows {
                 and autonomous_system._in_query
                 and host._in_query %}
             if1
-            {% else
-                if customer._in_query
+            {% elsif
+                customer._in_query
                   and actor._in_query
                   and autonomous_system._in_query %}
             if2
-            {% else
-                if customer._in_query
+            {% elsif
+                customer._in_query
                   and actor._in_query
                   and host._in_query %}
             if3
-            {% else
-                if customer._in_query
+            {% elsif
+                customer._in_query
                 and host._in_query %}
             dashboard_test.summary_distilled_flows_dch
-            {% else
-                if customer._in_query
+            {% elsif
+                customer._in_query
                   and autonomous_system._in_query %}
             dashboard_test.summary_distilled_flows_dcp
             {% else %}
