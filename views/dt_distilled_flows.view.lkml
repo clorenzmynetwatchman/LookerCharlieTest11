@@ -23,17 +23,39 @@ view: dt_distilled_flows {
                 and actor._in_query
                 and autonomous_system._in_query
                 and host._in_query %}
-            if1
-            {% elsif
-                customer._in_query
-                  and actor._in_query
-                  and autonomous_system._in_query %}
-            if2
+            summary_distilled_flows_dcaph
             {% elsif
                 customer._in_query
                   and actor._in_query
                   and host._in_query %}
-            if3
+            summary_distilled_flows_dcah
+           {% elsif
+                customer._in_query
+                  and actor._in_query
+                  and autonomous_system._in_query %}
+            summary_distilled_flows_dcap
+            {% elsif
+                actor._in_query
+                  and autonomous_system._in_query
+                  and host._in_query %}
+            summary_distilled_flows_daph
+           {% elsif
+                customer._in_query
+                  and autonomous_system._in_query
+                  and host._in_query %}
+            summary_distilled_flows_dcph
+            {% elsif
+                customer._in_query
+                and actor._in_query %}
+            dashboard_test.summary_distilled_flows_dca
+            {% elsif
+                actor._in_query
+                and host._in_query %}
+            dashboard_test.summary_distilled_flows_dah
+            {% elsif
+                actor._in_query
+                and autonomous_system._in_query %}
+            dashboard_test.summary_distilled_flows_dapv
             {% elsif
                 customer._in_query
                 and host._in_query %}
@@ -42,8 +64,24 @@ view: dt_distilled_flows {
                 customer._in_query
                   and autonomous_system._in_query %}
             dashboard_test.summary_distilled_flows_dcp
+            {% elsif
+                autonomous_system._in_query
+                  and host._in_query %}
+            dashboard_test.summary_distilled_flows_dph
+            {% elsif
+                customer._in_query %}
+            dashboard_test.summary_distilled_flows_dc
+            {% elsif
+                actor._in_query %}
+            dashboard_test.summary_distilled_flows_da
+            {% elsif
+                autonomous_system._in_query %}
+            dashboard_test.summary_distilled_flows_dp
+            {% elsif
+               host._in_query %}
+            dashboard_test.summary_distilled_flows_dch
             {% else %}
-            dashboard_test.summary_distilled_flows_dac
+            dashboard_test.summary_distilled_flows_d
             {% endif %}
        ;;
   }
