@@ -29,6 +29,6 @@ view: actor {
   }
 
   measure: count {
-    type: count_distinct
+    type: count
   }
 }
