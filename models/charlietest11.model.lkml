@@ -45,4 +45,11 @@ explore: liquidswitchviewtest {
     relationship: many_to_one
   }
 
+  sql_always_where:
+  {% if liquidswitchviewtest.date_filter._is_filtered %}
+  liquidswitchviewtest.date >= ${previous_start}
+  {% else %}
+  1 = 1
+  {% endif %};;
+
 }

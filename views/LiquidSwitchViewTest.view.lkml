@@ -1,4 +1,8 @@
+include: "/views/period_over_period.view"
+
 view: liquidswitchviewtest {
+  view_label: "Distilled Flows"
+  extends: [period_over_period]
    derived_table: {
      sql: SELECT
          date

@@ -29,7 +29,6 @@ view: actor {
   }
 
   measure: count {
-    type: count
-    drill_fields: [id, username, summary_distilled_flows_dacsp.count]
+    type: count_distinct
   }
 }
