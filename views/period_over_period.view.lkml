@@ -53,9 +53,9 @@ view: period_over_period {
     sql:
       {% if date_filter._is_filtered %}
         CASE
-            WHEN date >= ${filter_start} AND datetime <= ${filter_end}
+            WHEN date >= ${filter_start} AND date <= ${filter_end}
               THEN 'Current Period'
-            WHEN date >= ${previous_start} AND datetime <= ${previous_end}
+            WHEN date >= ${previous_start} AND date <= ${previous_end}
               THEN 'Previous Period'
         END
       {% else %}
