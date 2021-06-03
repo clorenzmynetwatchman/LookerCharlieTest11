@@ -18,60 +18,31 @@ explore: customer {}
 
 explore: flow_datasource {}
 
-explore: summary_distilled_flows_dacsp {
+explore: liquidswitchviewtest {
   label: "Distilled Flows"
 
   join: actor {
     type: left_outer
-    sql_on: ${summary_distilled_flows_dacsp.actor_id} = ${actor.id} ;;
+    sql_on: ${liquidswitchviewtest.actor_id} = ${actor.id} ;;
     relationship: many_to_one
   }
 
   join: customer {
     type: left_outer
-    sql_on: ${summary_distilled_flows_dacsp.customer_id} = ${customer.id} ;;
+    sql_on: ${liquidswitchviewtest.customer_id} = ${customer.id} ;;
     relationship: many_to_one
   }
 
   join: autonomous_system {
     type: left_outer
-    sql_on: ${summary_distilled_flows_dacsp.proxy_asn} = ${autonomous_system.id} ;;
+    sql_on: ${liquidswitchviewtest.proxy_asn} = ${autonomous_system.id} ;;
     relationship: many_to_one
   }
 
   join: flow_datasource {
     type: left_outer
-    sql_on: ${summary_distilled_flows_dacsp.datasource_id} = ${flow_datasource.id}.id} ;;
+    sql_on: ${liquidswitchviewtest.datasource_id} = ${flow_datasource.id}.id} ;;
     relationship: many_to_one
   }
 
-  aggregate_table:  total_session_count {
-    materialization: {
-      datagroup_trigger: charlietest11_default_datagroup
-      }
-      query: {
-        measures: [summary_distilled_flows_dacsp.session_count]
-        }
-      }
-
-  aggregate_table:  session_count_by_d {
-    materialization: {
-      datagroup_trigger: charlietest11_default_datagroup
-    }
-    query: {
-      dimensions: [summary_distilled_flows_dacsp.date_date]
-      measures: [summary_distilled_flows_dacsp.session_count]
-      }
-    }
-
-  aggregate_table:  session_count_by_dc {
-    materialization: {
-      datagroup_trigger: charlietest11_default_datagroup
-    }
-    query: {
-      dimensions: [summary_distilled_flows_dacsp.date_date
-                  ,customer.id]
-      measures: [summary_distilled_flows_dacsp.session_count]
-    }
-  }
-  }
+}

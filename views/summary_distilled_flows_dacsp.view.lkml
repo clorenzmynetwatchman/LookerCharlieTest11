@@ -16,6 +16,7 @@ view: summary_distilled_flows_dacsp {
 
   dimension: datasource_id {
     type: number
+    hidden: yes
     sql: ${TABLE}."datasource_id" ;;
   }
 
