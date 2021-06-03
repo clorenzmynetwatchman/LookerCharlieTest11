@@ -18,7 +18,7 @@ view: dt_distilled_flows {
         {% endif %}
         ,session_count
         ,lasttime
-        ,firstime
+        ,firsttime
        FROM {% if customer._in_query
                 and actor._in_query
                 and autonomous_system._in_query
