@@ -61,6 +61,17 @@ explore: summary_distilled_flows_dacsp {
     query: {
       dimensions: [summary_distilled_flows_dacsp.date_date]
       measures: [summary_distilled_flows_dacsp.session_count]
+      }
+    }
+
+  aggregate_table:  session_count_by_dc {
+    materialization: {
+      datagroup_trigger: charlietest11_default_datagroup
+    }
+    query: {
+      dimensions: [summary_distilled_flows_dacsp.date_date
+                  ,customer.id]
+      measures: [summary_distilled_flows_dacsp.session_count]
     }
   }
   }
