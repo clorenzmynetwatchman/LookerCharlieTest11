@@ -23,17 +23,17 @@ view: dt_distilled_flows {
                 and actor._in_query
                 and autonomous_system._in_query
                 and host._in_query %}
-            detail_table
+            if1
             {% else
                 if customer._in_query
                   and actor._in_query
                   and autonomous_system._in_query %}
-            detail_table
+            if2
             {% else
                 if customer._in_query
                   and actor._in_query
                   and host._in_query %}
-            detail_table
+            if3
             {% else
                 if customer._in_query
                 and host._in_query %}
