@@ -25,6 +25,5 @@ view: customer {
 
   measure: count {
     type: count
-    drill_fields: [id, name, host.count, summary_distilled_flows_dacsp.count]
   }
 }

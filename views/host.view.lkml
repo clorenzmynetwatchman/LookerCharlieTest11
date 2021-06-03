@@ -1,5 +1,5 @@
-view: flow_datasource {
-  sql_table_name: dashboard_test.flow_datasource ;;
+view: host {
+  sql_table_name: dashboard_test.host ;;
   drill_fields: [id]
 
   dimension: id {
@@ -15,6 +15,5 @@ view: flow_datasource {
 
   measure: count {
     type: count
-    drill_fields: [id, name]
   }
 }

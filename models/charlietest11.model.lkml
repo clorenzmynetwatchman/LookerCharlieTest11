@@ -16,37 +16,36 @@ explore: autonomous_system {}
 
 explore: customer {}
 
-explore: flow_datasource {}
-
-explore: liquidswitchviewtest {
+explore: dt_distilled_flows {
   label: "Distilled Flows"
 
   join: actor {
     type: inner
-    sql_on: ${liquidswitchviewtest.actor_id} = ${actor.id} ;;
+    sql_on: ${dt_distilled_flows.actor_id} = ${actor.id} ;;
     relationship: many_to_one
   }
 
   join: customer {
     type: inner
-    sql_on: ${liquidswitchviewtest.customer_id} = ${customer.id} ;;
+    sql_on: ${dt_distilled_flows.customer_id} = ${customer.id} ;;
     relationship: many_to_one
   }
 
   join: autonomous_system {
     type: inner
-    sql_on: ${liquidswitchviewtest.proxy_asn} = ${autonomous_system.id} ;;
+    sql_on: ${dt_distilled_flows.proxy_asn} = ${autonomous_system.id} ;;
     relationship: many_to_one
   }
 
-  join: flow_datasource {
+  join: host {
     type: inner
-    sql_on: ${liquidswitchviewtest.datasource_id} = ${flow_datasource.id}.id} ;;
+    sql_on: ${dt_distilled_flows.host_id} = ${host.id} ;;
     relationship: many_to_one
   }
+
 
   sql_always_where:
-  {% if liquidswitchviewtest.date_filter._is_filtered %}
+  {% if dt_distilled_flows.date_filter._is_filtered %}
   liquidswitchviewtest.date >= ${previous_start}
   {% else %}
   1 = 1
