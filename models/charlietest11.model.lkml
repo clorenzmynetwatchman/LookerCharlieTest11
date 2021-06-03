@@ -22,25 +22,25 @@ explore: liquidswitchviewtest {
   label: "Distilled Flows"
 
   join: actor {
-    type: left_outer
+    type: inner
     sql_on: ${liquidswitchviewtest.actor_id} = ${actor.id} ;;
     relationship: many_to_one
   }
 
   join: customer {
-    type: left_outer
+    type: inner
     sql_on: ${liquidswitchviewtest.customer_id} = ${customer.id} ;;
     relationship: many_to_one
   }
 
   join: autonomous_system {
-    type: left_outer
+    type: inner
     sql_on: ${liquidswitchviewtest.proxy_asn} = ${autonomous_system.id} ;;
     relationship: many_to_one
   }
 
   join: flow_datasource {
-    type: left_outer
+    type: inner
     sql_on: ${liquidswitchviewtest.datasource_id} = ${flow_datasource.id}.id} ;;
     relationship: many_to_one
   }
