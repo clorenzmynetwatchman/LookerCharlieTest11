@@ -46,7 +46,7 @@ explore: dt_distilled_flows {
 
   sql_always_where:
   {% if dt_distilled_flows.date_filter._is_filtered %}
-  liquidswitchviewtest.date >= ${previous_start}
+  dt_distilled_flows.date >= ${previous_start}
   {% else %}
   1 = 1
   {% endif %};;
