@@ -16,6 +16,8 @@ explore: autonomous_system {}
 
 explore: customer {}
 
+explore: host {}
+
 explore: dt_distilled_flows {
   label: "Distilled Flows"
 
