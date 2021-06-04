@@ -132,12 +132,16 @@ view: dt_distilled_flows {
     }
 
   measure: lasttime {
-    type:  max
     label: "Last Activity"
+    type: date_time
+    sql: MAX(dt_distilled_flows."lasttime") ;;
+    html: {{ rendered_value | date: "%a %b %d %r %Y %Z" }} ;;
   }
 
-  measure: firsttime{
-    type:  min
+  measure: firsttime {
     label: "First Activity"
+    type: date_time
+    sql: MIN(dt_distilled_flows."firsttime") ;;
+    html: {{ rendered_value | date: "%a %b %d %r %Y %Z" }} ;;
   }
 }
