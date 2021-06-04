@@ -11,6 +11,7 @@ view: actor {
   dimension: last_country_alpha2 {
     type: string
     sql: ${TABLE}."last_country_alpha2" ;;
+    map_layer_name: countries
   }
 
   dimension: last_country_alpha3 {
