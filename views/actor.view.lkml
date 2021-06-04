@@ -8,6 +8,11 @@ view: actor {
     sql: ${TABLE}."id" ;;
   }
 
+  dimension: id_text {
+    type: string
+    sql: ${TABLE}."id_text" ;;
+  }
+
   dimension: last_country_alpha2 {
     type: string
     sql: ${TABLE}."last_country_alpha2" ;;
