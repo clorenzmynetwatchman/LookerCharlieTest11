@@ -34,9 +34,9 @@ view: actor {
     sql: ${TABLE}."username" ;;
   }
 
-  dimension: country {
+  dimension: last_country {
     type: string
-    sql: ${TABLE}."country" ;;
+    sql: ${TABLE}."last_country" ;;
   }
 
   measure: count {
