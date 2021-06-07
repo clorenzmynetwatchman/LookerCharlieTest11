@@ -40,7 +40,7 @@ view: dt_distilled_flows {
                 actor._in_query
                   and autonomous_system._in_query
                   and host._in_query %}
-            summary_distilled_flows_daph
+            summary_distilled_flows_dcaph
            {% elsif
                 customer._in_query
                   and autonomous_system._in_query
@@ -57,7 +57,7 @@ view: dt_distilled_flows {
             {% elsif
                 actor._in_query
                 and autonomous_system._in_query %}
-            dashboard_test.summary_distilled_flows_dapv
+            dashboard_test.summary_distilled_flows_dap
             {% elsif
                 customer._in_query
                 and host._in_query %}
