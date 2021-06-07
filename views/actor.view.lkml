@@ -34,6 +34,11 @@ view: actor {
     sql: ${TABLE}."username" ;;
   }
 
+  dimension: country {
+    type: string
+    sql: ${TABLE}."country" ;;
+  }
+
   measure: count {
     type: count
   }
