@@ -25,17 +25,17 @@ view: dt_distilled_flows {
                 and actor._in_query
                 and autonomous_system._in_query
                 and host._in_query %}
-            summary_distilled_flows_dcaph
+            dashboard_test.summary_distilled_flows_dcaph
             {% elsif
                 customer._in_query
                   and actor._in_query
                   and host._in_query %}
-            summary_distilled_flows_dcah
+            dashboard_test.summary_distilled_flows_dcah
            {% elsif
                 customer._in_query
                   and actor._in_query
                   and autonomous_system._in_query %}
-            summary_distilled_flows_dcap
+            dashboard_test.summary_distilled_flows_dcap
             {% elsif
                 actor._in_query
                   and autonomous_system._in_query
