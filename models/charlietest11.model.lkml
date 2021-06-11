@@ -19,7 +19,7 @@ explore: customer {}
 explore: host {}
 
 explore: dt_distilled_flows {
-  label: "Distilled Flows"
+  label: "Distilled Flows Summary"
 
   join: actor {
     type: inner
