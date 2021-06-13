@@ -145,8 +145,9 @@ view: dt_distilled_flows {
     html: {{ rendered_value | date: "%a %b %d %r %Y %Z" }} ;;
   }
 
-  measure: date {
+  measure: date_count {
     label: "Date Count"
-    type: count
+    type: number
+    sql: count(${TABLE}."date") ;;
   }
 }
