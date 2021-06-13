@@ -63,7 +63,7 @@ view: customer {
 
   dimension: current_industry {
     type: string
-    sql: (SELECT industry FROM ${customer.SQL_TABLE_NAME} WHERE id = '{{_user_attributes['customer_id']  | floor }}' LIMIT 1);;
+    sql: (SELECT industry FROM ${customer.SQL_TABLE_NAME} WHERE id = ${customer_filter} LIMIT 1);;
     description: "Selects industry when customer_name user attribute is set"
     hidden: yes
     group_label: "Industry Peers Pivot"
@@ -78,7 +78,7 @@ view: customer {
 
   dimension: current_customer {
     type: string
-    sql: (SELECT ${TABLE}.name FROM ${customer.SQL_TABLE_NAME} WHERE ${TABLE}.id = '{{_user_attributes['customer_id']  | floor  }}' LIMIT 1);;
+    sql: (SELECT ${TABLE}.name FROM ${customer.SQL_TABLE_NAME} WHERE ${TABLE}.id = ${customer_filter} LIMIT 1);;
     description: "Selects industry when customer_name user attribute is set"
     hidden: yes
   }
