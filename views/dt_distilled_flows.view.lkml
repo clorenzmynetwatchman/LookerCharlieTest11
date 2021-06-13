@@ -144,4 +144,9 @@ view: dt_distilled_flows {
     sql: MIN(dt_distilled_flows."firsttime") ;;
     html: {{ rendered_value | date: "%a %b %d %r %Y %Z" }} ;;
   }
+
+  measure: date {
+    label: "Date Count"
+    type: count
+  }
 }
