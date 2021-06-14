@@ -1,5 +1,4 @@
 include: "/views/period_over_period.view"
-include: "/views/customer.view"
 
 view: dt_distilled_flows {
   view_label: "Distilled Flows"
@@ -87,6 +86,10 @@ view: dt_distilled_flows {
             dashboard_test.summary_distilled_flows_d t
             {% endif %}
        ;;
+  }
+
+  filter: embed_customer_filter {
+    type: number
   }
 
   dimension: actor_id {
