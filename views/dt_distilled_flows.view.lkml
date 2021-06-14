@@ -5,7 +5,8 @@ view: dt_distilled_flows {
   extends: [period_over_period]
   derived_table: {
     sql: SELECT
-         date
+         id
+         ,date
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
