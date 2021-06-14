@@ -94,7 +94,7 @@ view: dt_distilled_flows {
        ;;
   }
 
-  filter: embed_customer_filter {
+  parameter: embed_customer_filter {
     type: number
   }
 
