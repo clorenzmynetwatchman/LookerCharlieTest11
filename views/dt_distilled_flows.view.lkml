@@ -9,7 +9,7 @@ view: dt_distilled_flows {
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
-        {% if customer._in_query %}
+        {% if customer._in_query or embed_customer_filter._is_filterd %}
         ,customer_id
         {% endif %}
         {% if autonomous_system._in_query %}
