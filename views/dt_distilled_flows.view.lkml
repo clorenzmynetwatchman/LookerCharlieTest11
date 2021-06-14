@@ -71,7 +71,7 @@ view: dt_distilled_flows {
                   and host._in_query %}
             dashboard_test.summary_distilled_flows_dph
             {% elsif
-                customer._in_query + embed_customer_filter._is_filtered > 0 %}
+                embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dc
             {% elsif
                 actor._in_query %}
