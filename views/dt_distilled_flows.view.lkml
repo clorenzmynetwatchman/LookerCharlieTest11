@@ -88,13 +88,13 @@ view: dt_distilled_flows {
        ;;
   }
 
-  filter: embed_customer_filter {
+  parameter: embed_customer_filter {
     type: number
   }
 
   dimension: embed_customer_id {
     type: number
-    sql: ${embed_customer_filter} ;;
+    sql: {% parameter embed_customer_filter %} ;;
   }
 
   dimension: actor_id {
