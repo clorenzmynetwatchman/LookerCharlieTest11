@@ -85,7 +85,6 @@ view: dt_distilled_flows {
             {% else %}
             dashboard_test.summary_distilled_flows_d
             {% endif %}
-      where {% condition embed_customer_filter %} customer_id {% endcondition %}
        ;;
   }
 
