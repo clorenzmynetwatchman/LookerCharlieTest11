@@ -88,7 +88,7 @@ view: dt_distilled_flows {
        ;;
   }
 
-  parameter: embed_customer_filter {
+  filter: embed_customer_filter {
     type: number
   }
 
