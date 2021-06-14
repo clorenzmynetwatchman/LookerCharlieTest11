@@ -60,7 +60,9 @@ explore: dt_distilled_flows {
   1 = 1
   {% endif %}
   and
-  {% if dt_distilled_flows.embed_customer_filter._is_filtered %}
+  {% if dt_distilled_flows.embed_customer_filter._is_filtered and customer_peer._in_query %}
+  customer_peer.customer_id = ${embed_customer_id}
+  {% elsif dt_distilled_flows.embed_customer_filter._is_filtered %}
   dt_distilled_flows.customer_id = ${embed_customer_id}
   {% else %}
   1 = 1
