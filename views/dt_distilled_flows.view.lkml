@@ -92,6 +92,11 @@ view: dt_distilled_flows {
     type: number
   }
 
+  dimension: embed_customer_id {
+    type: number
+    sql: 965 ;;
+  }
+
   dimension: actor_id {
     type: number
     hidden: yes
