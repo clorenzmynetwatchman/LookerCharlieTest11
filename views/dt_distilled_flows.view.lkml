@@ -1,4 +1,5 @@
 include: "/views/period_over_period.view"
+include: "/views/customer.view"
 
 view: dt_distilled_flows {
   view_label: "Distilled Flows"
@@ -85,18 +86,7 @@ view: dt_distilled_flows {
             {% else %}
             dashboard_test.summary_distilled_flows_d t
             {% endif %}
-        where {% if embed_customer_filter._is_filtered %}
-                t.industry in (select industry from dashboard_test.customer
-                                where {% condition embed_customer_filter %} customer_id {% endcondition %}
-                                )
-              {% else %}
-                1=1
-              {% endif %}
        ;;
-  }
-
-  filter: embed_customer_filter {
-    type: number
   }
 
   dimension: actor_id {
