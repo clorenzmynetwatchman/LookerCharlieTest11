@@ -98,6 +98,12 @@ view: dt_distilled_flows {
     sql: {% parameter embed_customer_filter %} ;;
   }
 
+  dimension: id {
+    type: number
+    primary_key: yes
+    hidden: yes
+  }
+
   dimension: actor_id {
     type: number
     hidden: yes
