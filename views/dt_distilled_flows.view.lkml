@@ -21,7 +21,7 @@ view: dt_distilled_flows {
         ,session_count
         ,lasttime
         ,firsttime
-       FROM {% if customer._in_query
+       FROM {% if customer._in_query + embed_customer_filter._is_filtered > 0
                 and actor._in_query
                 and autonomous_system._in_query
                 and host._in_query %}
@@ -90,12 +90,6 @@ view: dt_distilled_flows {
 
   filter: embed_customer_filter {
     type: number
-  }
-
-  dimension: embed_customer_id {
-    type: number
-    hidden: yes
-    sql: ${embed_customer_filter} ;;
   }
 
   dimension: actor_id {
