@@ -36,7 +36,7 @@ explore: dt_distilled_flows {
 
   join: customer_peer {
     type: inner
-    sql_on: ${dt_distilled_flows.customer_id} = ${customer.id} ;;
+    sql_on: ${dt_distilled_flows.customer_id} = ${customer_peer.peer_id} ;;
     relationship: many_to_many
   }
 
