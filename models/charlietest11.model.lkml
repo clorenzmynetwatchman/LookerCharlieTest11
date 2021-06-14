@@ -34,6 +34,13 @@ explore: dt_distilled_flows {
     relationship: many_to_one
   }
 
+  join: customer_peer {
+    type: inner
+    sql_on: ${dt_distilled_flows.customer_id} = ${customer.id} ;;
+    relationship: many_to_many
+  }
+
+
   join: autonomous_system {
     type: inner
     sql_on: ${dt_distilled_flows.proxy_asn} = ${autonomous_system.id} ;;
