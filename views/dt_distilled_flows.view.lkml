@@ -87,14 +87,15 @@ view: dt_distilled_flows {
             {% endif %}
         where {% if embed_customer_filter._is_filtered %}
                 t.industry in (select industry from dashboard_test.customer
-                                where customer_id = {{ embed_customer_filter }}
+                                where {% condition embed_customer_filter %} customer_id {% endcondition %}
+                                )
               {% else %}
                 1=1
               {% endif %}
        ;;
   }
 
-  parameter: embed_customer_filter {
+  filter: embed_customer_filter {
     type: number
   }
 
