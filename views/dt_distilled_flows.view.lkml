@@ -21,20 +21,20 @@ view: dt_distilled_flows {
         ,session_count
         ,lasttime
         ,firsttime
-       FROM {% if customer._in_query + embed_customer_filter._is_filtered > 0
-                and actor._in_query
+       FROM {% if actor._in_query
                 and autonomous_system._in_query
-                and host._in_query %}
+                and host._in_query
+                and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dcaph
             {% elsif
-                customer._in_query
-                  and actor._in_query
-                  and host._in_query %}
+                actor._in_query
+                  and host._in_query
+                  and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dcah
            {% elsif
-                customer._in_query
-                  and actor._in_query
-                  and autonomous_system._in_query %}
+                actor._in_query
+                  and autonomous_system._in_query
+                  and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dcap
             {% elsif
                 actor._in_query
@@ -42,13 +42,13 @@ view: dt_distilled_flows {
                   and host._in_query %}
             dashboard_test.summary_distilled_flows_dcaph
            {% elsif
-                customer._in_query
-                  and autonomous_system._in_query
-                  and host._in_query %}
+                autonomous_system._in_query
+                  and host._in_query
+                  and customer._in_query or embed_customer_filter._is_filtered %}
             summary_distilled_flows_dcph
             {% elsif
-                customer._in_query
-                and actor._in_query %}
+                actor._in_query
+                  and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dca
             {% elsif
                 actor._in_query
@@ -59,12 +59,12 @@ view: dt_distilled_flows {
                 and autonomous_system._in_query %}
             dashboard_test.summary_distilled_flows_dap
             {% elsif
-                customer._in_query
-                and host._in_query %}
+                host._in_query
+                and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dch
             {% elsif
-                customer._in_query
-                  and autonomous_system._in_query %}
+                autonomous_system._in_query
+                  and customer._in_query or embed_customer_filter._is_filtered %}
             dashboard_test.summary_distilled_flows_dcp
             {% elsif
                 autonomous_system._in_query
