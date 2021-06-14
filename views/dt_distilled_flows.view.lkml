@@ -94,7 +94,7 @@ view: dt_distilled_flows {
 
   dimension: embed_customer_id {
     type: number
-    sql: 965 ;;
+    sql: ${embed_customer_filter} ;;
   }
 
   dimension: actor_id {
