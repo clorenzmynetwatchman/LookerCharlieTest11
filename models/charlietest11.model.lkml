@@ -54,7 +54,7 @@ explore: dt_distilled_flows {
   {% endif %}
   and
   {% if dt_distilled_flows.embed_customer_filter._is_filtered %}
-  dt_distilled_flows.customer_id = ${embed_customer_filter}
+  dt_distilled_flows.customer_id = {% parameter embed_customer_filter %}
   {% else %}
   1 = 1
   {% endif %};;
