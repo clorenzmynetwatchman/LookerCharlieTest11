@@ -19,6 +19,7 @@ explore: customer {}
 explore: host {}
 
 explore: dt_distilled_flows {
+  view_name: dt_distilled_flows
   label: "Distilled Flows Summary"
 
   join: actor {
@@ -44,7 +45,6 @@ explore: dt_distilled_flows {
     sql_on: ${dt_distilled_flows.host_id} = ${host.id} ;;
     relationship: many_to_one
   }
-
 
   sql_always_where:
   {% if dt_distilled_flows.date_filter._is_filtered %}
