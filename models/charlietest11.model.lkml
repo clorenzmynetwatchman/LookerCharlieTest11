@@ -65,12 +65,10 @@ explore: dt_distilled_flows_external {
   }
 
   sql_always_where:
-  {% if dt_distilled_flows.embed_customer_filter._is_filtered and customer_peer._in_query %}
+  {% if customer_peer._in_query %}
   customer_peer.customer_id = '{{_user_attributes['customer_id'] | floor }}'
-  {% elsif dt_distilled_flows.embed_customer_filter._is_filtered %}
-  dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% else %}
-  1 = 1
+  customer.id = '{{_user_attributes['customer_id'] | floor }}'
   {% endif %} ;;
 
 }

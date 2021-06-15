@@ -10,7 +10,7 @@ view: dt_distilled_flows {
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
-        {% if customer._in_query or embed_customer_filter._is_filtered %}
+        {% if customer._in_query or customer_peer._in_query %}
         ,customer_id
         {% endif %}
         {% if autonomous_system._in_query %}
@@ -30,12 +30,12 @@ view: dt_distilled_flows {
             {% elsif
                 actor._in_query
                   and host._in_query
-                  and customer._in_query or embed_customer_filter._is_filtered %}
+                  and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dcah t
            {% elsif
                 actor._in_query
                   and autonomous_system._in_query
-                  and customer._in_query or embed_customer_filter._is_filtered %}
+                  and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 actor._in_query
@@ -45,11 +45,11 @@ view: dt_distilled_flows {
            {% elsif
                 autonomous_system._in_query
                   and host._in_query
-                  and customer._in_query or embed_customer_filter._is_filtered %}
+                  and customer._in_query or customer_peer._in_query %}
             summary_distilled_flows_dcph t
             {% elsif
                 actor._in_query
-                  and customer._in_query or embed_customer_filter._is_filtered %}
+                  and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query
@@ -61,11 +61,11 @@ view: dt_distilled_flows {
             dashboard_test.summary_distilled_flows_dap t
             {% elsif
                 host._in_query
-                and customer._in_query or embed_customer_filter._is_filtered %}
+                and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dch t
             {% elsif
                 autonomous_system._in_query
-                  and customer._in_query or embed_customer_filter._is_filtered %}
+                  and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dcp t
             {% elsif
                 autonomous_system._in_query
