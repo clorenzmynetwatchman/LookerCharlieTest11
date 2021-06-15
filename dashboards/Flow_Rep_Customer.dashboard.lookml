@@ -6,7 +6,7 @@
   - title: Interval Change
     name: Interval Change
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.session_count, dt_distilled_flows.timeframes]
     sorts: [dt_distilled_flows.timeframes]
@@ -37,7 +37,7 @@
   - title: Daily Average
     name: Daily Average
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.timeframes, dt_distilled_flows.session_count, dt_distilled_flows.firsttime,
       dt_distilled_flows.lasttime]
@@ -73,7 +73,7 @@
   - title: Distinct Actors
     name: Distinct Actors
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.timeframes, actor.count]
     filters: {}
@@ -108,7 +108,7 @@
   - title: 30 Day Trend
     name: 30 Day Trend
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.timeframes, dt_distilled_flows.session_count]
     filters:
@@ -141,7 +141,7 @@
   - title: 60 Day Trend
     name: 60 Day Trend
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.timeframes, dt_distilled_flows.session_count]
     filters:
@@ -174,7 +174,7 @@
   - title: 90 Day Trend
     name: 90 Day Trend
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [dt_distilled_flows.timeframes, dt_distilled_flows.session_count]
     filters:
@@ -207,7 +207,7 @@
   - title: Sessions
     name: Sessions
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_line
     fields: [dt_distilled_flows.session_count, dt_distilled_flows.date_date, actor.count]
     fill_fields: [dt_distilled_flows.date_date]
@@ -269,7 +269,7 @@
   - title: Host Names
     name: Host Names
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_grid
     fields: [host.name, dt_distilled_flows.session_count]
     sorts: [dt_distilled_flows.session_count desc]
@@ -326,7 +326,7 @@
   - title: Known Bad Actors
     name: Known Bad Actors
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_grid
     fields: [actor.id, actor.username, dt_distilled_flows.lasttime, dt_distilled_flows.session_count,
       actor.last_country]
@@ -381,7 +381,7 @@
   - title: Top 5 Known Countries
     name: Top 5 Known Countries
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_pie
     fields: [dt_distilled_flows.session_count, actor.last_country]
     filters:
@@ -429,7 +429,7 @@
   - title: Proxy ASNs
     name: Proxy ASNs
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_grid
     fields: [autonomous_system.name, dt_distilled_flows.session_count]
     sorts: [dt_distilled_flows.session_count desc]
@@ -469,7 +469,7 @@
   - title: Untitled
     name: Untitled
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: single_value
     fields: [customer.name]
     sorts: [customer.name]
@@ -503,7 +503,7 @@
   - title: Industry Peers
     name: Industry Peers
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     type: looker_line
     fields: [dt_distilled_flows.date_date, dt_distilled_flows.session_count, customer_peer.masked_peer_name]
     pivots: [customer_peer.masked_peer_name]
@@ -560,7 +560,7 @@
       display: popover
       options: []
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     listens_to_filters: []
     field: dt_distilled_flows.date_filter
   - name: Embed Customer Filter
@@ -577,6 +577,6 @@
       - '2'
       - '3'
     model: charlietest11
-    explore: dt_distilled_flows
+    explore: dt_distilled_flows_external
     listens_to_filters: []
     field: dt_distilled_flows.embed_customer_filter
