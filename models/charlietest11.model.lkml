@@ -37,13 +37,6 @@ explore: dt_distilled_flows {
     relationship: many_to_one
   }
 
-  join: customer_peer {
-    type: inner
-    sql_on: ${dt_distilled_flows.customer_id} = ${customer_peer.peer_id} ;;
-    relationship: many_to_many
-  }
-
-
   join: autonomous_system {
     type: inner
     sql_on: ${dt_distilled_flows.proxy_asn} = ${autonomous_system.id} ;;
@@ -61,14 +54,6 @@ explore: dt_distilled_flows {
   dt_distilled_flows.date >= ${previous_start}
   {% else %}
   1 = 1
-  {% endif %}
-  and
-  {% if dt_distilled_flows.embed_customer_filter._is_filtered and customer_peer._in_query %}
-  customer_peer.customer_id = ${embed_customer_id}
-  {% elsif dt_distilled_flows.embed_customer_filter._is_filtered %}
-  dt_distilled_flows.customer_id = ${embed_customer_id}
-  {% else %}
-  1 = 1
   {% endif %};;
 }
 
@@ -84,9 +69,9 @@ explore: dt_distilled_flows_external {
 
   sql_always_where:
   {% if dt_distilled_flows.embed_customer_filter._is_filtered and customer_peer._in_query %}
-  customer_peer.customer_id = ${embed_customer_id}
+  customer_peer.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% elsif dt_distilled_flows.embed_customer_filter._is_filtered %}
-  dt_distilled_flows.customer_id = ${embed_customer_id}
+  dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% else %}
   1 = 1
   {% endif %} ;;
