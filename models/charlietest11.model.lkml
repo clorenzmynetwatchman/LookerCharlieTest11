@@ -67,5 +67,25 @@ explore: dt_distilled_flows {
   {% else %}
   1 = 1
   {% endif %};;
+}
+
+explore: dt_distilled_flows_external {
+  extends: [dt_distilled_flows]
+  label: "Distilled Flows External"
+
+  join: customer_peer {
+    type: inner
+    sql_on: ${dt_distilled_flows.customer_id} = ${customer_peer.peer_id} ;;
+    relationship: many_to_many
+  }
+
+  sql_always_where:
+  {% if dt_distilled_flows.embed_customer_filter._is_filtered and customer_peer._in_query %}
+  customer_peer.customer_id = ${embed_customer_id}
+  {% elsif dt_distilled_flows.embed_customer_filter._is_filtered %}
+  dt_distilled_flows.customer_id = ${embed_customer_id}
+  {% else %}
+  1 = 1
+  {% endif %} ;;
 
 }
