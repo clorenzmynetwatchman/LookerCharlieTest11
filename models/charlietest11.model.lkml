@@ -68,7 +68,7 @@ explore: dt_distilled_flows_external {
   {% if customer_peer._in_query %}
   customer_peer.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% else %}
-  customer.id = '{{_user_attributes['customer_id'] | floor }}'
+  dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% endif %} ;;
 
 }
