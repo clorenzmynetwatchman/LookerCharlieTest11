@@ -164,6 +164,6 @@ view: dt_distilled_flows {
   measure: date_count {
     label: "Date Count"
     type: number
-    sql: count(${TABLE}."date") ;;
+    sql: count(distinct ${TABLE}."date") ;;
   }
 }
