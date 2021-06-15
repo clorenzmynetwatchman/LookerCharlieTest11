@@ -34,6 +34,12 @@ explore: dt_distilled_flows {
     relationship: many_to_one
   }
 
+  join: customer_peer {
+    type: inner
+    sql_on: ${dt_distilled_flows.customer_id} = ${customer_peer.peer_id} ;;
+    relationship: many_to_many
+  }
+
   join: autonomous_system {
     type: inner
     sql_on: ${dt_distilled_flows.proxy_asn} = ${autonomous_system.id} ;;
@@ -57,12 +63,6 @@ explore: dt_distilled_flows {
 explore: dt_distilled_flows_external {
   extends: [dt_distilled_flows]
   label: "Distilled Flows External"
-
-  join: customer_peer {
-    type: inner
-    sql_on: ${dt_distilled_flows.customer_id} = ${customer_peer.peer_id} ;;
-    relationship: many_to_many
-  }
 
   sql_always_where:
   {% if customer_peer._in_query %}
