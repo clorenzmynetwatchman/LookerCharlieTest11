@@ -25,7 +25,7 @@ view: dt_distilled_flows {
        FROM {% if actor._in_query
                 and autonomous_system._in_query
                 and host._in_query
-                and customer._in_query or embed_customer_filter._is_filtered %}
+                and customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
@@ -72,7 +72,7 @@ view: dt_distilled_flows {
                   and host._in_query %}
             dashboard_test.summary_distilled_flows_dph t
             {% elsif
-                customer._in_query or embed_customer_filter._is_filtered %}
+                customer._in_query or customer_peer._in_query %}
             dashboard_test.summary_distilled_flows_dc t
             {% elsif
                 actor._in_query %}
@@ -87,15 +87,6 @@ view: dt_distilled_flows {
             dashboard_test.summary_distilled_flows_d t
             {% endif %}
        ;;
-  }
-
-  parameter: embed_customer_filter {
-    type: number
-  }
-
-  dimension: embed_customer_id {
-    type: number
-    sql: {% parameter embed_customer_filter %} ;;
   }
 
   dimension: id {

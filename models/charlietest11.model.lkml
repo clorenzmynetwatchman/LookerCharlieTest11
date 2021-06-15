@@ -3,9 +3,6 @@ connection: "phx-postgres"
 # include all the views
 include: "/views/**/*.view"
 
-# include all dashboards
-include: "/dashboards/*.dashboard.lookml"
-
 datagroup: charlietest11_default_datagroup {
   sql_trigger: SELECT current_date FROM etl_log;;
   max_cache_age: "1 hour"
