@@ -3,13 +3,11 @@ view: summary_distilled_flows_tcapxh {
 
   dimension: actor_id {
     type: number
-    hidden: yes
     sql: ${TABLE}."actor_id" ;;
   }
 
   dimension: timeframe_id {
     type: number
-    hidden: yes
     sql: ${TABLE}."timeframe_id" ;;
   }
 
@@ -20,19 +18,16 @@ view: summary_distilled_flows_tcapxh {
 
   dimension: customer_id {
     type: number
-    hidden: yes
     sql: ${TABLE}."customer_id" ;;
   }
 
   dimension: host_id {
     type: number
-    hidden: yes
     sql: ${TABLE}."host_id" ;;
   }
 
   dimension: proxy_asn {
     type: number
-    hidden: yes
     sql: ${TABLE}."proxy_asn" ;;
   }
 

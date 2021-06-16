@@ -81,7 +81,7 @@ explore: summary_distilled_flows_tcapxh {
                             , summary_distilled_flows_tcapxh.crime1000]
 
   join: actor {
-    type: left_outer
+    type: inner
     sql_on: ${summary_distilled_flows_tcapxh.actor_id} = ${actor.id} ;;
     relationship: many_to_one
   }
