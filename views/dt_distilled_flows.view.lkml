@@ -46,7 +46,7 @@ view: dt_distilled_flows {
                 autonomous_system._in_query
                   and host._in_query
                   and customer._in_query or customer_peer._in_query or _explore._name contains "external" %}
-            summary_distilled_flows_dcph t
+            dashboard_test.summary_distilled_flows_dcph t
             {% elsif
                 actor._in_query
                   and customer._in_query or customer_peer._in_query or _explore._name contains "external" %}
