@@ -72,3 +72,13 @@ explore: dt_distilled_flows_external {
   {% endif %} ;;
 
 }
+
+# explore: dt_distilled_flows_customer {
+#   extends: [dt_distilled_flows]
+
+# ## Customer Access Filter ##
+#   access_filter: {
+#     field: customer.id
+#     user_attribute: customer_id
+#   }
+# }
