@@ -1,17 +1,17 @@
 view: actor {
   sql_table_name: dashboard_test.actor ;;
 
-  parameter: my_actors_or_all_actors {
+  parameter: my_data_or_all_data {
     type: unquoted
     allowed_value: {
-      label: "My Actors"
-      value: "myactors"
+      label: "My Data"
+      value: "mydata"
     }
     allowed_value: {
-      label: "All Actors"
-      value: "allactors"
+      label: "All Data"
+      value: "alldata"
     }
-    default_value: "allactors"
+    default_value: "alldata"
   }
 
   dimension: id {

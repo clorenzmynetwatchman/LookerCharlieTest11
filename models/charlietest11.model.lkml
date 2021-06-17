@@ -147,7 +147,7 @@ explore: dt_distilled_flows_actor_details_external{
   hidden: no
 
   sql_always_where:
-  {% if actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+  {% if actor.my_data_or_all_data._parameter_value == 'mydata' %}
   dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% else %}
   1=1
