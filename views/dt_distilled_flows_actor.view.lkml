@@ -5,7 +5,11 @@ view: dt_distilled_flows_actor {
   extends: [period_over_period]
   derived_table: {
     sql: SELECT
-         date
+        {% if proxy_ip._in_query %}
+         datetime
+        {% else %}
+        date
+        {% endif %}
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
