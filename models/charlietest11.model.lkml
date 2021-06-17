@@ -147,7 +147,7 @@ explore: dt_distilled_flows_actor_wcust {
 ####################################################
 
 explore: dt_distilled_flows_actor_details_external{
-  extends: [dt_distilled_flows]
+  extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details External"
 
   sql_always_where:
