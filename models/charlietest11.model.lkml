@@ -11,7 +11,7 @@ datagroup: charlietest11_default_datagroup {
 persist_with: charlietest11_default_datagroup
 
 ####################################################
-# Base distilled flows summary explore.  Extended to distilled flows summary external
+# Base distilled flows summary explore.
 ####################################################
 
 explore: dt_distilled_flows {
@@ -57,23 +57,20 @@ explore: dt_distilled_flows {
 }
 
 ####################################################
-# Extended distilled flows summary explore for external customers
-#   Also, secures customer by user attribute.
+# Extended distilled flows summary explore external.
 ####################################################
 
 explore: dt_distilled_flows_external {
   extends: [dt_distilled_flows]
   label: "Distilled Flows Summary (external)"
 
-  sql_always_where:
-  {% if customer_peer._in_query %}
-  customer_peer.customer_id = '{{_user_attributes['customer_id'] | floor }}'
-  {% elsif _explore._name contains 'external' and actor.my_data_or_all_data._parameter_value == 'alldata' %}
-  1=1
-  {% else %}
-  dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
-  {% endif %} ;;
+#  access_filter: {
+#    field: dt_distilled_flows.customer_id
+#    user_attribute: customer_id
+#  }
 
+  sql_always_where:
+  dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}';;
 }
 
 ####################################################
@@ -155,4 +152,4 @@ explore: dt_distilled_flows_actor_details_external{
   1=1
   {% endif %} ;;
 
-  }
+}
