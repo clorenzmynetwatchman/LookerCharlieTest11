@@ -84,7 +84,6 @@ explore: dt_distilled_flows_actor {
   always_filter: {
     filters: [actor.id_text: ""]
   }
-  hidden: yes
   view_name: dt_distilled_flows_actor
 
   join: actor {
