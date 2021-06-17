@@ -84,7 +84,6 @@ explore: dt_distilled_flows_actor {
   always_filter: {
     filters: [actor.id_text: ""]
   }
-  view_name: dt_distilled_flows_actor
 
   join: actor {
     type: inner
@@ -123,22 +122,3 @@ explore: dt_distilled_flows_actor {
   1=0
   {% endif %};;
 }
-
-
-####################################################
-# Extended distilled flows actor details explore w/out customer
-#    for external users.  Also, secures customer by user attribute.
-####################################################
-
-explore: dt_distilled_flows_actor_external {
-  extends: [dt_distilled_flows_actor]
-  label: "Distilled Flows Actor Details External"
-
-  sql_always_where:
-  {% if actor.my_actors_or_all_actors._paramater_value == 'myactor' %}
-  dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}'
-  {% else %}
-  1=1
-  {% endif %} ;;
-
-  }
