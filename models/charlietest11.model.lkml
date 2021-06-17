@@ -119,7 +119,7 @@ explore: dt_distilled_flows_actor {
   1 = 1
   {% endif %}
   and
-  {% if actor.id_text._value != '' %}
+  {% if actor.id_text._is_filtered %}
   1=1
   {% else %}
   1=0
