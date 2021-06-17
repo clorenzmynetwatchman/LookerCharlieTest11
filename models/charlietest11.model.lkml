@@ -75,7 +75,7 @@ explore: dt_distilled_flows_external {
 
 explore: dt_distilled_flows_actor {
   always_filter: {
-    filters: [actor.id: ""]
+    filters: [actor.id: "11282"]
   }
   view_name: dt_distilled_flows_actor
   label: "Distilled Flows Actor Details"
