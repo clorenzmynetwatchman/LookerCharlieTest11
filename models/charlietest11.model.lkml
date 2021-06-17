@@ -20,7 +20,7 @@ explore: host {}
 
 explore: dt_distilled_flows {
   view_name: dt_distilled_flows
-  label: "Distilled Flows Summary"
+  label: "Distilled Flows"
 
   join: actor {
     type: inner
@@ -71,36 +71,4 @@ explore: dt_distilled_flows_external {
   dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% endif %} ;;
 
-}
-
-explore: summary_distilled_flows_tcapxh {
-  view_name: summary_distilled_flows_tcapxh
-  label: "Actor Research Detail by Timeframe"
-  cancel_grouping_fields: [actor.id, actor.username, host.name
-                            , actor.last_ip, summary_distilled_flows_tcapxh.proxy_ip
-                            , summary_distilled_flows_tcapxh.crime1000]
-
-  join: actor {
-    type: inner
-    sql_on: ${summary_distilled_flows_tcapxh.actor_id} = ${actor.id} ;;
-    relationship: many_to_one
-  }
-
-  join: customer {
-    type: left_outer
-    sql_on: ${summary_distilled_flows_tcapxh.customer_id} = ${customer.id} ;;
-    relationship: many_to_one
-  }
-
-  join: autonomous_system {
-    type: left_outer
-    sql_on: ${summary_distilled_flows_tcapxh.proxy_asn} = ${autonomous_system.id} ;;
-    relationship: many_to_one
-  }
-
-  join: host {
-    type: left_outer
-    sql_on: ${summary_distilled_flows_tcapxh.host_id} = ${host.id} ;;
-    relationship: many_to_one
-  }
 }
