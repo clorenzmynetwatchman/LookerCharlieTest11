@@ -75,7 +75,7 @@ explore: dt_distilled_flows_external {
 
 explore: dt_distilled_flows_actor {
   always_filter: {
-    filters: [actor.id: "11282"]
+    filters: [actor.id: ""]
   }
   view_name: dt_distilled_flows_actor
   label: "Distilled Flows Actor Details"
@@ -103,5 +103,11 @@ explore: dt_distilled_flows_actor {
   dt_distilled_flows.date >= ${previous_start}
   {% else %}
   1 = 1
+  {% endif %}
+  and
+  {% if actor.id._is_filtered %}
+  1=1
+  {% else %}
+  1=0
   {% endif %};;
 }
