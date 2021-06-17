@@ -10,6 +10,10 @@ datagroup: charlietest11_default_datagroup {
 
 persist_with: charlietest11_default_datagroup
 
+####################################################
+# Base distilled flows summary explore.  Extended to distilled flows summary external
+####################################################
+
 explore: dt_distilled_flows {
   view_name: dt_distilled_flows
   label: "Distilled Flows Summary"
@@ -52,6 +56,11 @@ explore: dt_distilled_flows {
   {% endif %};;
 }
 
+####################################################
+# Extended distilled flows summary explore for external customers
+#   Also, secures customer by user attribute.
+####################################################
+
 explore: dt_distilled_flows_external {
   extends: [dt_distilled_flows]
   label: "Distilled Flows Summary External"
@@ -65,12 +74,18 @@ explore: dt_distilled_flows_external {
 
 }
 
+####################################################
+# Base distilled flows actor detail explore.
+#    Extended to two other explores; actor detail with customer info (internal)
+#      and actor detail without customer info (external)
+####################################################
+
 explore: dt_distilled_flows_actor {
   always_filter: {
     filters: [actor.id_text: ""]
   }
+  hidden: yes
   view_name: dt_distilled_flows_actor
-  label: "Distilled Flows Actor Details"
 
   join: actor {
     type: inner
@@ -110,8 +125,29 @@ explore: dt_distilled_flows_actor {
   {% endif %};;
 }
 
+####################################################
+# Extended distilled flows actor details explore w customer
+#    for internal users
+####################################################
+
+explore: dt_distilled_flows_actor_wcust {
+  extends: [dt_distilled_flows_actor]
+  label: "Distilled Flows Actor Details"
+
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    relationship: many_to_one
+  }
+}
+
+####################################################
+# Extended distilled flows actor details explore w/out customer
+#    for external users.  Also, secures customer by user attribute.
+####################################################
+
 explore: dt_distilled_flows_actor_external {
-  extends: [dt_distilled_flows]
+  extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details External"
 
   sql_always_where:
