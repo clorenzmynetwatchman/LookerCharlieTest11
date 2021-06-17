@@ -13,7 +13,7 @@ view: dt_distilled_flows_actor {
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
-        {% if customer._in_query %}
+        {% if customer._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
         ,customer_id
         {% endif %}
         {% if autonomous_system._in_query %}
