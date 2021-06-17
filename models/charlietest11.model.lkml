@@ -81,9 +81,6 @@ explore: dt_distilled_flows_external {
 ####################################################
 
 explore: dt_distilled_flows_actor {
-  always_filter: {
-    filters: [actor.id_text: ""]
-  }
 
   join: actor {
     type: inner
