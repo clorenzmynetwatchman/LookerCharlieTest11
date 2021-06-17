@@ -29,31 +29,26 @@ view: dt_distilled_flows_actor {
             {% elsif actor._in_query
                 and autonomous_system._in_query
                 and host._in_query
-                and dt_distilled_flows_actor.customer_id._in_query %}
+                and customer._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
                   and host._in_query
-                  and dt_distilled_flows_actor.customer_id._in_query %}
+                  and customer._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
             dashboard_test.summary_distilled_flows_dcah t
            {% elsif
                 actor._in_query
                   and autonomous_system._in_query
-                  and dt_distilled_flows_actor.customer_id._in_query %}
+                  and customer._in_query %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 actor._in_query
                   and autonomous_system._in_query
-                  and host._in_query %}
+                  and host._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
             dashboard_test.summary_distilled_flows_dcaph t
-           {% elsif
-                autonomous_system._in_query
-                  and host._in_query
-                  and dt_distilled_flows_actor.customer_id._in_query %}
-            dashboard_test.summary_distilled_flows_dcph t
             {% elsif
                 actor._in_query
-                  and dt_distilled_flows_actor.customer_id._in_query %}
+                  and customer._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query
@@ -65,30 +60,10 @@ view: dt_distilled_flows_actor {
             dashboard_test.summary_distilled_flows_dap t
             {% elsif
                 host._in_query
-                and dt_distilled_flows_actor.customer_id._in_query %}
-            dashboard_test.summary_distilled_flows_dch t
-            {% elsif
-                autonomous_system._in_query
-                  and dt_distilled_flows_actor.customer_id._in_query %}
-            dashboard_test.summary_distilled_flows_dcp t
-            {% elsif
-                autonomous_system._in_query
-                  and host._in_query %}
-            dashboard_test.summary_distilled_flows_dph t
-            {% elsif
-                customer._in_query %}
-            dashboard_test.summary_distilled_flows_dc t
-            {% elsif
-                actor._in_query %}
-            dashboard_test.summary_distilled_flows_da t
-            {% elsif
-                autonomous_system._in_query %}
-            dashboard_test.summary_distilled_flows_dp t
-            {% elsif
-               host._in_query %}
+                and customer._in_query %}
             dashboard_test.summary_distilled_flows_dch t
             {% else %}
-            dashboard_test.summary_distilled_flows_d t
+            dashboard_test.summary_distilled_flows_da t
             {% endif %}
        ;;
   }

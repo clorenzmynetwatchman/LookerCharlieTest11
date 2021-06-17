@@ -93,6 +93,13 @@ explore: dt_distilled_flows_actor {
     relationship: many_to_one
   }
 
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    relationship: many_to_one
+  }
+
+
   join: autonomous_system {
     type: inner
     sql_on: ${dt_distilled_flows_actor.proxy_asn} = ${autonomous_system.id} ;;
@@ -128,14 +135,7 @@ explore: dt_distilled_flows_actor_wcust {
   extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details"
   hidden: no
-
-  join: customer {
-    type: inner
-    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
-    relationship: many_to_one
-  }
 }
-
 ####################################################
 # Extended distilled flows actor details w/out customer
 #   for external.  Also, secures customer by user attribute.
