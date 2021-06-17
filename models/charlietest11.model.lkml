@@ -68,7 +68,7 @@ explore: dt_distilled_flows_external {
   sql_always_where:
   {% if customer_peer._in_query %}
   customer_peer.customer_id = '{{_user_attributes['customer_id'] | floor }}'
-  {% elsif customer.id._in_query or customer.name._in_query or customer.relationship._in_query
+  {% elsif customer.id._is_filtered or customer.id._in_query or customer.name._in_query or customer.relationship._in_query
       or actor.my_data_or_all_data._parameter_value == 'mydata' %}
    dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}'
   {% else %}
