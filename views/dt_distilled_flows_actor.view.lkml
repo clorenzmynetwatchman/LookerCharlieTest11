@@ -6,7 +6,7 @@ view: dt_distilled_flows_actor {
   derived_table: {
     sql: SELECT
         {% if proxy_ip._in_query %}
-         datetime
+         date(datetime) as date
         {% else %}
         date
         {% endif %}
