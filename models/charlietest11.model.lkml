@@ -70,7 +70,7 @@ explore: dt_distilled_flows_external {
 #  }
 
   sql_always_where:
-  dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}';;
+  dt_distilled_flows.customer_id = '{{_user_attributes['customer_id'] | floor }}';;
 }
 
 ####################################################
