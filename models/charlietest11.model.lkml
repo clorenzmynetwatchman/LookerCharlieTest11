@@ -95,20 +95,20 @@ explore: dt_distilled_flows_actor {
 
   join: customer {
     type: inner
-    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    sql_on: coalesce(${dt_distilled_flows_actor.customer_id},-1) = ${customer.id} ;;
     relationship: many_to_one
   }
 
 
   join: autonomous_system {
     type: inner
-    sql_on: ${dt_distilled_flows_actor.proxy_asn} = ${autonomous_system.id} ;;
+    sql_on: coalesce(${dt_distilled_flows_actor.proxy_asn},-1) = ${autonomous_system.id} ;;
     relationship: many_to_one
   }
 
   join: host {
     type: inner
-    sql_on: ${dt_distilled_flows_actor.host_id} = ${host.id} ;;
+    sql_on: coalesce(${dt_distilled_flows_actor.host_id},-1) = ${host.id} ;;
     relationship: many_to_one
   }
 
