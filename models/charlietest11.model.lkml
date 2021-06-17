@@ -85,11 +85,16 @@ explore: dt_distilled_flows_actor {
     filters: [actor.id_text: ""]
   }
   view_name: dt_distilled_flows_actor
-  hidden: no
 
   join: actor {
     type: inner
     sql_on: ${dt_distilled_flows_actor.actor_id} = ${actor.id} ;;
+    relationship: many_to_one
+  }
+
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
     relationship: many_to_one
   }
 
@@ -119,22 +124,6 @@ explore: dt_distilled_flows_actor {
   {% endif %};;
 }
 
-####################################################
-# Extended distilled flows actor details explore w customer
-#    for internal users
-####################################################
-
-explore: dt_distilled_flows_actor_wcust {
-  extends: [dt_distilled_flows_actor]
-  label: "Distilled Flows Actor Details"
-  hidden: no
-
-  join: customer {
-    type: inner
-    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
-    relationship: many_to_one
-  }
-}
 
 ####################################################
 # Extended distilled flows actor details explore w/out customer
@@ -144,7 +133,6 @@ explore: dt_distilled_flows_actor_wcust {
 explore: dt_distilled_flows_actor_external {
   extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details External"
-  hidden: no
 
   sql_always_where:
   {% if actor.my_actors_or_all_actors._paramater_value == 'myactor' %}
