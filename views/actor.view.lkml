@@ -25,12 +25,21 @@ view: actor {
     sql: ${TABLE}."id_text";;
   }
 
-  dimension: link_external_id_text {
+  dimension: link_external_id_text_research {
     type: string
     sql: ${TABLE}."id_text";;
     link: {
       label: "Actor Research"
-      url: "/dashboards-next/126?Actor+ID={{ value }}"
+      url: "/dashboards-next/126?id_text={{ value }}"
+    }
+  }
+
+    dimension: link_external_id_text_detail {
+    type: string
+    sql: ${TABLE}."id_text";;
+    link: {
+      label: "Actor Detail"
+      url: "/dashboards-next/126?id_text={{ value }}"
     }
   }
 
