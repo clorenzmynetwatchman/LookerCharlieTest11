@@ -144,6 +144,7 @@ explore: dt_distilled_flows_actor_wcust {
 explore: dt_distilled_flows_actor_external {
   extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details External"
+  hidden: no
 
   sql_always_where:
   {% if actor.my_actors_or_all_actors._paramater_value == 'myactor' %}
