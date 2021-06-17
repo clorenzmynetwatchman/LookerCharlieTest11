@@ -29,17 +29,17 @@ view: dt_distilled_flows_actor {
             {% elsif actor._in_query
                 and autonomous_system._in_query
                 and host._in_query
-                and distilled_flows_actor.customer_id._in_query %}
+                and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
                   and host._in_query
-                  and distilled_flows_actor.customer_id._in_query %}
+                  and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dcah t
            {% elsif
                 actor._in_query
                   and autonomous_system._in_query
-                  and distilled_flows_actor.customer_id._in_query %}
+                  and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 actor._in_query
@@ -49,11 +49,11 @@ view: dt_distilled_flows_actor {
            {% elsif
                 autonomous_system._in_query
                   and host._in_query
-                  and distilled_flows_actor.customer_id._in_query %}
+                  and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dcph t
             {% elsif
                 actor._in_query
-                  and distilled_flows_actor.customer_id._in_query %}
+                  and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query
@@ -69,7 +69,7 @@ view: dt_distilled_flows_actor {
             dashboard_test.summary_distilled_flows_dch t
             {% elsif
                 autonomous_system._in_query
-                  and distilled_flows_actor.customer_id._in_query %}
+                  and dt_distilled_flows_actor.customer_id._in_query %}
             dashboard_test.summary_distilled_flows_dcp t
             {% elsif
                 autonomous_system._in_query
