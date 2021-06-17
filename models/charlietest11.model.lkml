@@ -63,7 +63,7 @@ explore: dt_distilled_flows {
 
 explore: dt_distilled_flows_external {
   extends: [dt_distilled_flows]
-  label: "Distilled Flows Summary External"
+  label: "Distilled Flows Summary (external)"
 
   sql_always_where:
   {% if customer_peer._in_query %}
@@ -143,7 +143,7 @@ explore: dt_distilled_flows_actor_wcust {
 
 explore: dt_distilled_flows_actor_details_external{
   extends: [dt_distilled_flows_actor]
-  label: "Distilled Flows Actor Details External"
+  label: "Distilled Flows Actor Details (external)"
   hidden: no
 
   sql_always_where:

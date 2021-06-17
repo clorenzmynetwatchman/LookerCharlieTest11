@@ -10,7 +10,7 @@ view: dt_distilled_flows {
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
-        {% if customer._in_query or customer_peer._in_query %}
+        {% if customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
         ,customer_id
         {% endif %}
         {% if autonomous_system._in_query %}
@@ -25,17 +25,17 @@ view: dt_distilled_flows {
        FROM {% if actor._in_query
                 and autonomous_system._in_query
                 and host._in_query
-                and customer._in_query or customer_peer._in_query %}
+                and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
                   and host._in_query
-                  and customer._in_query or customer_peer._in_query %}
+                  and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dcah t
            {% elsif
                 actor._in_query
                   and autonomous_system._in_query
-                  and customer._in_query or customer_peer._in_query %}
+                  and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 actor._in_query
@@ -45,11 +45,11 @@ view: dt_distilled_flows {
            {% elsif
                 autonomous_system._in_query
                   and host._in_query
-                  and customer._in_query or customer_peer._in_query %}
+                  and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dcph t
             {% elsif
                 actor._in_query
-                  and customer._in_query or customer_peer._in_query %}
+                  and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query
@@ -61,18 +61,18 @@ view: dt_distilled_flows {
             dashboard_test.summary_distilled_flows_dap t
             {% elsif
                 host._in_query
-                and customer._in_query or customer_peer._in_query %}
+                and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dch t
             {% elsif
                 autonomous_system._in_query
-                  and customer._in_query or customer_peer._in_query %}
+                  and customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dcp t
             {% elsif
                 autonomous_system._in_query
                   and host._in_query %}
             dashboard_test.summary_distilled_flows_dph t
             {% elsif
-                customer._in_query or customer_peer._in_query %}
+                customer._in_query or customer_peer._in_query or _explore._name contains 'external' %}
             dashboard_test.summary_distilled_flows_dc t
             {% elsif
                 actor._in_query %}
