@@ -30,7 +30,7 @@ view: actor {
     sql: ${TABLE}."id_text";;
     link: {
       label: "Actor Research"
-      url: "/dashboards-next/125?Actor+ID={{ value }}"
+      url: "/dashboards-next/126?Actor+ID={{ value }}"
     }
   }
 
