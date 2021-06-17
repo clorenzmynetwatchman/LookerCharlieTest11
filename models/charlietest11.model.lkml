@@ -81,6 +81,11 @@ explore: dt_distilled_flows_external {
 ####################################################
 
 explore: dt_distilled_flows_actor {
+  view_name: dt_distilled_flows_actor
+  hidden: yes
+  always_filter: {
+    filters: [actor.id_text: ""]
+  }
 
   join: actor {
     type: inner
@@ -119,3 +124,37 @@ explore: dt_distilled_flows_actor {
   1=0
   {% endif %};;
 }
+
+####################################################
+# Extended distilled flows actor details w/ customer
+#   for internal users
+####################################################
+
+explore: dt_distilled_flows_actor_wcust {
+  extends: [dt_distilled_flows_actor]
+  label: "Distilled Flows Actor Details"
+
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    relationship: many_to_one
+  }
+}
+
+####################################################
+# Extended distilled flows actor details w/out customer
+#   for external.  Also, secures customer by user attribute.
+####################################################
+
+explore: dt_distilled_flows_actor_details_external{
+  extends: [dt_distilled_flows]
+  label: "Distilled Flows Actor Details External"
+
+  sql_always_where:
+  {% if actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+  dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}'
+  {% else %}
+  1=1
+  {% endif %} ;;
+
+  }
