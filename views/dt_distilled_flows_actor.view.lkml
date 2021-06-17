@@ -149,6 +149,18 @@ view: dt_distilled_flows_actor {
     label: "Proxy IP"
   }
 
+  dimension: actor_link_display_internal {
+    type: string
+    sql: '1' ;;
+    description: "Used to enable Actor ID links to internal research dashboard"
+  }
+
+  dimension: actor_link_display_external {
+    type: string
+    sql: '1' ;;
+    description: "Used to enable Actor ID links to external research dashboard"
+  }
+
   measure: session_count {
     type: number
     sql: {% if proxy_ip._in_query %} count(1) {% else %} sum(${TABLE}.session_count) {% endif %} ;;
