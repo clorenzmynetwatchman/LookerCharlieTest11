@@ -127,6 +127,7 @@ explore: dt_distilled_flows_actor {
 explore: dt_distilled_flows_actor_wcust {
   extends: [dt_distilled_flows_actor]
   label: "Distilled Flows Actor Details"
+  hidden: no
 
   join: customer {
     type: inner
