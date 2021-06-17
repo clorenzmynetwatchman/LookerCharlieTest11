@@ -1,6 +1,18 @@
 view: actor {
   sql_table_name: dashboard_test.actor ;;
-  drill_fields: [id]
+
+  parameter: my_actors_or_all_actors {
+    type: unquoted
+    allowed_value: {
+      label: "My Actors"
+      value: "myactors"
+    }
+    allowed_value: {
+      label: "All Actors"
+      value: "allactors"
+    }
+    default_value: "allactors"
+  }
 
   dimension: id {
     primary_key: yes

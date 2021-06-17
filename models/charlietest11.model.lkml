@@ -10,17 +10,9 @@ datagroup: charlietest11_default_datagroup {
 
 persist_with: charlietest11_default_datagroup
 
-explore: actor {}
-
-explore: autonomous_system {}
-
-explore: customer {}
-
-explore: host {}
-
 explore: dt_distilled_flows {
   view_name: dt_distilled_flows
-  label: "Distilled Flows"
+  label: "Distilled Flows Summary"
 
   join: actor {
     type: inner
@@ -62,7 +54,7 @@ explore: dt_distilled_flows {
 
 explore: dt_distilled_flows_external {
   extends: [dt_distilled_flows]
-  label: "Distilled Flows External"
+  label: "Distilled Flows Summary External"
 
   sql_always_where:
   {% if customer_peer._in_query %}
@@ -117,3 +109,16 @@ explore: dt_distilled_flows_actor {
   1=0
   {% endif %};;
 }
+
+explore: dt_distilled_flows_actor_external {
+  extends: [dt_distilled_flows]
+  label: "Distilled Flows Actor Details External"
+
+  sql_always_where:
+  {% if actor.my_actors_or_all_actors._paramater_value == 'myactor' %}
+  dt_distilled_flows_actor.customer_id = '{{_user_attributes['customer_id'] | floor }}'
+  {% else %}
+  1=1
+  {% endif %} ;;
+
+  }
