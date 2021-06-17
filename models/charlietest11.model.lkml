@@ -86,6 +86,12 @@ explore: dt_distilled_flows_actor {
     relationship: many_to_one
   }
 
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    relationship: many_to_one
+  }
+
   join: autonomous_system {
     type: inner
     sql_on: ${dt_distilled_flows_actor.proxy_asn} = ${autonomous_system.id} ;;
