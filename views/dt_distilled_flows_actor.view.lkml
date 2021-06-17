@@ -13,7 +13,7 @@ view: dt_distilled_flows_actor {
         {% if actor._in_query %}
         ,actor_id
         {% endif %}
-        {% if customer._in_query or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+        {% if customer._in_query or actor.my_data_or_all_data._parameter_value == 'mydata' %}
         ,customer_id
         {% endif %}
         {% if autonomous_system._in_query %}
@@ -33,19 +33,19 @@ view: dt_distilled_flows_actor {
                 and autonomous_system._in_query
                 and host._in_query
                 and customer._in_query
-                  or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                  or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
                   and host._in_query
                   and customer._in_query
-                    or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                    or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcah t
            {% elsif
                 actor._in_query
                   and autonomous_system._in_query
                   and customer._in_query
-                    or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                    or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 actor._in_query
@@ -56,12 +56,12 @@ view: dt_distilled_flows_actor {
                 autonomous_system._in_query
                   and host._in_query
                   and customer._in_query
-                    or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                    or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcaph t
             {% elsif
                 actor._in_query
                   and customer._in_query
-                    or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                    or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query
@@ -74,12 +74,12 @@ view: dt_distilled_flows_actor {
             {% elsif
                 host._in_query
                 and customer._in_query
-                  or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                  or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcah t
             {% elsif
                 autonomous_system._in_query
                   and customer._in_query
-                    or actor.my_actors_or_all_actors._parameter_value == 'myactors' %}
+                    or actor.my_data_or_all_data._parameter_value == 'mydata' %}
             dashboard_test.summary_distilled_flows_dcap t
             {% elsif
                 autonomous_system._in_query
@@ -87,7 +87,7 @@ view: dt_distilled_flows_actor {
             dashboard_test.summary_distilled_flows_daph t
             {% elsif
                 customer._in_query
-                  or actor.my_actors_or_all_actors._parameter_value == 'myactors' %%}
+                  or actor.my_data_or_all_data._parameter_value == 'mydata' %%}
             dashboard_test.summary_distilled_flows_dca t
             {% elsif
                 actor._in_query %}
