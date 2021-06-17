@@ -17,7 +17,6 @@ view: dt_distilled_flows_actor {
         {% endif %}
         {% if proxy_ip._in_query %}
         ,proxy_ip
-        ,count(1)
         {% else %}
         ,session_count
         {% endif %}
@@ -89,4 +88,49 @@ view: dt_distilled_flows_actor {
             {% endif %}
        ;;
   }
+
+  dimension: actor_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}."actor_id" ;;
+  }
+
+  dimension: customer_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}."customer_id" ;;
+  }
+
+  dimension_group: date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."date" ;;
+  }
+
+  dimension: proxy_asn {
+    type: number
+    hidden: yes
+    sql: ${TABLE}."proxy_asn" ;;
+  }
+
+  dimension: host_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}."host_id" ;;
+  }
+
+  measure: session_count {
+    type: number
+    sql: {% if proxy_ip._in_query %} count(1) {% else %} sum(${TABLE}.session_count) ;;
+  }
+
 }
