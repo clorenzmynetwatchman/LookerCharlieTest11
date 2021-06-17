@@ -72,3 +72,42 @@ explore: dt_distilled_flows_external {
   {% endif %} ;;
 
 }
+
+explore: dt_distilled_flows_actor {
+  always_filter: {
+    filters: [actor.id: ""]
+  }
+  view_name: dt_distilled_flows_actor
+  label: "Distilled Flows Actor Details"
+
+  join: actor {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.actor_id} = ${actor.id} ;;
+    relationship: many_to_one
+  }
+
+  join: customer {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.customer_id} = ${customer.id} ;;
+    relationship: many_to_one
+  }
+
+  join: autonomous_system {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.proxy_asn} = ${autonomous_system.id} ;;
+    relationship: many_to_one
+  }
+
+  join: host {
+    type: inner
+    sql_on: ${dt_distilled_flows_actor.host_id} = ${host.id} ;;
+    relationship: many_to_one
+  }
+
+  sql_always_where:
+  {% if dt_distilled_flows_actor.date_filter._is_filtered %}
+  dt_distilled_flows.date >= ${previous_start}
+  {% else %}
+  1 = 1
+  {% endif %};;
+}

@@ -22,7 +22,7 @@ view: dt_distilled_flows_actor {
         {% endif %}
        FROM {% if proxy_ip._in_query %}
             dashboard.distilled_flows_v3
-            {% if actor._in_query
+            {% elsif actor._in_query
                 and autonomous_system._in_query
                 and host._in_query
                 and customer._in_query %}
@@ -128,9 +128,15 @@ view: dt_distilled_flows_actor {
     sql: ${TABLE}."host_id" ;;
   }
 
+  dimension: proxy_ip {
+    type: string
+    sql: ${TABLE}."proxy_ip" ;;
+    label: "Proxy IP"
+  }
+
   measure: session_count {
     type: number
-    sql: {% if proxy_ip._in_query %} count(1) {% else %} sum(${TABLE}.session_count) ;;
+    sql: {% if proxy_ip._in_query %} count(1) {% else %} sum(${TABLE}.session_count) {% endif %} ;;
   }
 
 }
